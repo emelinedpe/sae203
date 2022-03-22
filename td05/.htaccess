@@ -1,0 +1,4 @@
+AuthUserFile http://mmi21b05.sae203.ovh/admin.php/.htpasswd
+AuthName "Accès protégé"
+AuthType Basic
+Require valid-user
