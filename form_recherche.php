@@ -1,5 +1,5 @@
 <?php
-require('header.php');
+require 'header.php';
 require 'lib_crud.inc.php';
 $co=connexionBD();
 ?>

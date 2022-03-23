@@ -1,8 +1,8 @@
 :root{
-    --main-pink:#f3cfe1;
+    --main-pink:#f5cfda;
     --bg: #1a1e24;
     --color:black;
-    --font: Montserrat, Roboto, Helvetica, Arial, sans-serif;
+    --font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;;
 
 }
 html,body {
@@ -423,6 +423,10 @@ li{
 @keyframes showPetals {
   from {opacity: 0;}
   to {opacity: 1;}
+}
+#divplantes{
+    background-color: transparent;
+    border-radius:5%;
 }
 
 @media screen and (min-width: 480px){

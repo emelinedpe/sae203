@@ -9,7 +9,7 @@ echo '<div class="plantesList">' ;
 
 foreach ($resultat as $value) {
     //print_r($value);
-    echo '<div class="divPlante">' ;
+    echo '<div class="divPlante" id="divplantes">';
     echo '<img src=".'.$value['pl_photo'].'" alt="'.$value['pl_nom'].'">';
     echo '<h3>'.$value['pl_nom'] .'</h3>';
     if ($value['pl_nom2']!="") {
@@ -33,7 +33,7 @@ foreach ($resultat as $value) {
 ?>
 
 <body style="font-family:sans-serif;">
-		<a href="index.php">Accueil</a> | <a href="listing.php">Catalogue</a> | <a href="admin/admin.php">Admin.</a>
+		<a href="index.php">Accueil</a> | <a href="listing.php">Catalogue</a> | <a href="/admin/admin.php">Admin.</a>
 		<hr />
 		<h1>Nos albums</h1>
 		<hr />

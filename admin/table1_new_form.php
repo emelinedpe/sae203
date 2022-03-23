@@ -1,19 +1,15 @@
 <?php
-require 'lib_crud.inc.php';
+require '../lib_crud.inc.php';
 $co=connexionBD();
 $lieux = getListeLieux($co);
 ?>
-<!DOCTYPE html>
-<html>
-	<head>
-	    <title>SAE203</title>
-	</head>
+<?php require '../header.php'; ?>
 	<body style="font-family:sans-serif;">
-	    <a href="./index.php">Accueil</a> | <a href="admin.php">Gestion</a>
+	    <a href="/sae203/index.php">Accueil</a> | <a href="./admin/admin.php">Gestion</a>
 	    <hr />
 	    <h1>Ajouter une plante</h1>
 	    <hr />
-	    <form action="./table1_new_valide.php" method="POST" enctype="multipart/form-data">
+	    <form action="table1_new_valide.php" method="POST" enctype="multipart/form-data">
 	        Nom : <input type="text" name="nom" required /><br />
 			Nom 2 : <input type="text" name="nom2" /><br />
 	        Taille : <input type="number" name="taille" min="0" max="50000" required /><br />

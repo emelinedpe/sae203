@@ -1,5 +1,5 @@
 <?php
-require('header.php');
+require('.admin\header.php');
 ?>
 
 <input type="button" class="button" value="Retour" onclick="history.back()">

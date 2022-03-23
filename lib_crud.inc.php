@@ -67,7 +67,7 @@ function afficherListe($mabd) {
     echo '<tbody>'."\n";
     foreach ($resultat as $value) {
         echo '<tr>'."\n";
-        echo '<td><img class="photo" style="width:200px" src="./'.$value['pl_photo'].'" alt="image_'.$value['pl_id'].'" /></td>'."\n";
+        echo '<td><img class="photo" style="width:200px" src="../'.$value['pl_photo'].'" alt="image_'.$value['pl_id'].'" /></td>'."\n";
         echo '<td>'.$value['pl_nom'].'</td>'."\n";
         echo '<td>'.$value['pl_taille'].'</td>'."\n";
         echo '<td>'.$value['pl_propriete'].'</td>'."\n";
@@ -80,35 +80,34 @@ function afficherListe($mabd) {
     echo '</table>'."\n";
 }
 
+// affichage de la liste des plantes pour la gestion
+function afficherLieux($mabd) {
+  $req = "SELECT * FROM lieux";
+  try {
+      $resultat = $mabd->query($req);
+  } catch (PDOException $e) {
+      // s'il y a une erreur, on l'affiche
+      echo '<p>Erreur : ' . $e->getMessage() . '</p>';
+      die();
+  }
+  echo '<a href="admin.php"><input type="button" value="Retour"></a>';
+  echo '<a href="table2_new_form.php"><input type="button" value="Ajouter un lieu"></a>';
+  echo '<table>'."\n";
+  echo '<thead><tr><th>nom</th><th>climat</th><th>type(s)</th><th>modifier</th><th>Supprimer</th></tr></thead>'."\n";
+  echo '<tbody>'."\n";
+  foreach ($resultat as $value) {
+      echo '<tr>'."\n";
+      echo '<td>'.$value['lieux_nom'].'</td>'."\n";
+      echo '<td>'.$value['lieux_climat'].'</td>'."\n";
+      echo '<td>'.$value['lieux_type'].'</td>'."\n";
+      echo '<td><a href="table2_update_form.php?num='.$value['lieux_id'].'">Modifier</a></td>'."\n";
+      echo '<td><a href="table2_delete.php?num='.$value['lieux_id'].'">Supprimer</a></td>'."\n";
+      echo '</tr>'."\n";
+  }
+  echo '</tbody>'."\n";
+  echo '</table>'."\n";
+}
 
-
-    // affichage de la liste des BDs pour la gestion des utilisateurs
-    /*function afficherListeUsers($users) {
-      $req = "SELECT * FROM auteurs;"
-      try {
-          $resultat = $users->query($req);
-      } catch (PDOException $e) {
-          // s'il y a une erreur, on l'affiche
-          echo '<p>Erreur : ' . $e->getMessage() . '</p>';
-          die();
-      }
-      echo '<table>'."\n";
-      echo '<thead><tr><th>Photo</th><th>Titre</th><th>Prix (&euro;)</th><th>Pages</th><th>Auteur</th><th>Modifier</th><th>Supprimer</th></tr></thead>'."\n";
-      echo '<tbody>'."\n";
-      foreach ($resultat as $value) {
-          echo '<tr>'."\n";
-          echo '<td><img class="photo" src="../img/bds/'.$value['bd_photo'].'" alt="image_'.$value['bd_id'].'" /></td>'."\n";
-          echo '<td>'.$value['bd_titre'].'</td>'."\n";
-          echo '<td>'.$value['bd_prix'].'</td>'."\n";
-          echo '<td>'.$value['bd_nb_pages'].'</td>'."\n";
-          echo '<td>'.$value['auteur_prenom'].' '.$value['auteur_nom'].'</td>'."\n";
-          echo '<td><a href="table1_update_form.php?num='.$value['???'].'">Modifier</a></td>'."\n";
-          echo '<td><a href="table1_delete.php?num='.$value['???'].'">Supprimer</a></td>'."\n";
-          echo '</tr>'."\n";
-      }
-      echo '</tbody>'."\n";
-      echo '</table>'."\n";
-  }*/
 
 //Supprime une plante en BDD en fonction d'un id passé en paramètre.
 function deletePlante($planteId,$mabd){
@@ -116,10 +115,29 @@ function deletePlante($planteId,$mabd){
   $resultat = $mabd->query($req);
 }
 
+//Supprime une plante en BDD en fonction d'un id passé en paramètre.
+function deleteLieu($lieuId,$mabd){
+  $req = 'DELETE FROM `lieux` WHERE lieux_id = '.$lieuId.';'; 
+  $resultat = $mabd->query($req);
+}
+
 // Insertion des données en bases
 function insertionPlantes($nom,$nom2,$taille,$vie,$nourriture,$propriete,$pays,$images,$mabd) {
   $req = "INSERT INTO plantes (pl_nom, pl_nom2,pl_taille,pl_vie,pl_nour,pl_propriete,lieux_id,pl_photo) 
   VALUES ('$nom', '$nom2', $taille, '$vie','$nourriture','$propriete',$pays,'$images')";
+  try {
+      $resultat = $mabd->query($req);
+  } catch (PDOException $e) {
+      // s'il y a une erreur, on l'affiche
+      echo '<p>Erreur : ' . $e->getMessage() . '</p>';
+      die();
+  }
+
+}
+
+// Insertion des données en bases
+function insertionLieu($nom,$climat,$type,$mabd) {
+  $req = "INSERT INTO lieux (lieux_nom, lieux_climat,lieux_type) VALUES ('$nom', '$climat', '$type');";
   try {
       $resultat = $mabd->query($req);
   } catch (PDOException $e) {
@@ -150,6 +168,22 @@ function UpdatePlantes($nom,$nom2,$taille,$vie,$nourriture,$propriete,$pays,$ima
       die();
   }
 }
+
+// mise a jour des données en bases
+function UpdateLieux($nom,$clim,$type,$idLieu,$mabd) {
+  $req = "UPDATE lieux
+  SET lieux_nom = '$nom',
+  lieux_climat = '$clim',
+    lieux_type = '$type'
+  WHERE lieux_id = $idLieu ;";
+  try {
+      $resultat = $mabd->query($req);
+  } catch (PDOException $e) {
+      // s'il y a une erreur, on l'affiche
+      echo '<p>Erreur : ' . $e->getMessage() . '</p>';
+      die();
+  }
+}
 //Récupère les informations d'une plante en fonction d'un ID passé en paramètre
 function getPlante($mabd, $idPlante){
   $req = "SELECT * FROM plantes INNER JOIN lieux ON plantes.lieux_id = lieux.lieux_id WHERE pl_id = $idPlante;";
@@ -163,6 +197,21 @@ function getPlante($mabd, $idPlante){
     die();
   }
   return $resPlante;
+}
+
+//Récupère les informations d'un lieu en fonction d'un ID passé en paramètre
+function getLieu($mabd, $idLieu){
+  $req = "SELECT * FROM lieux WHERE lieux_id = $idLieu;";
+
+  try {
+    $resLieu = $mabd->query($req);
+  } 
+  catch (PDOException $e) {
+    // s'il y a une erreur, on l'affiche
+    echo '<p>Erreur : ' . $e->getMessage() . '</p>';
+    die();
+  }
+  return $resLieu;
 }
 
 //Récupère la liste des lieux

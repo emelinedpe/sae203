@@ -4,12 +4,12 @@
 		<title>SAE203</title>
 	</head>
 	<body style="font-family:sans-serif;">
-	    <a href="./index.php">Accueil</a> | <a href="admin.php">Gestion</a>
+	    <a href="/sae203/index.php">Accueil</a> | <a href="admin.php">Gestion</a>
 	    <hr />
 	    <h1>Ajouter une Plante</h1>
 	    <hr />
 	    <?php
-	        require './lib_crud.inc.php';
+	        require '../lib_crud.inc.php';
             
             $nom = $_POST['nom'];
             $nom2 = $_POST['nom2'];
@@ -31,7 +31,7 @@
 	        $nouvelleImage = date("Y_m_d_H_i_s")."---".$_FILES["photo"]["name"];
 	
 	        if(is_uploaded_file($_FILES["photo"]["tmp_name"])) {
-	            if(!move_uploaded_file($_FILES["photo"]["tmp_name"], "./images/".$nouvelleImage)) {
+	            if(!move_uploaded_file($_FILES["photo"]["tmp_name"], "../images/".$nouvelleImage)) {
 	                echo '<p>Problème avec la sauvegarde de l\'image, désolé...</p>'."\n";
 	                die();
 	            }

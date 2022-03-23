@@ -1,13 +1,13 @@
 <?php
-require 'lib_crud.inc.php';
+require '../lib_crud.inc.php';
 $co=connexionBD();
 ?>
 <!DOCTYPE html>
 <html>
 <head><title></title></head>
 <body>
-<a href="./table1_gestion.php">retour au tableau de bord</a> 	
-<hr> <h1>gestion de nos albums</h1> <hr>
+<a href="table1_gestion.php">retour au tableau de bord</a> 	
+<hr> <h1>gestion de nos plantes</h1> <hr>
 
 <?php
 // recupérer dans l'url l'id de l'album à supprimer

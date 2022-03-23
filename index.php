@@ -4,7 +4,7 @@
     
 <main>
     <a class="btnIndex" href="listing.php" ><li>Catalogue</li></a>
-    <a class="btnIndex"href="admin.php"><li>Privé</li></a>
+    <a class="btnIndex"href="admin/admin.php"><li>Privé</li></a>
     <a class="btnIndex" href="form_recherche.php"><li>Rechercher</li></a>
     <section class="flower">
     <div class="big-petal big-petal1"></div>
