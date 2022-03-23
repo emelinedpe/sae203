@@ -1,5 +1,20 @@
+
 <?php
 require('header.php');
+?>
+<body >
+		<hr />
+		<h1>Nos albums</h1>
+		<hr />
+		<?php
+		    require 'lib_crud.inc.php';
+		    $co=connexionBD();
+		    afficherCatalogue($co);
+		    deconnexionBD($co);
+		?>
+	</body>
+</html>
+<?php
 $mesplantes = new PDO('mysql:host=localhost;dbname=sae203;charset=UTF8;', 'root','');
 
 $mesplantes->query('SET NAMES utf8;');
@@ -32,16 +47,4 @@ foreach ($resultat as $value) {
 }
 ?>
 
-<body style="font-family:sans-serif;">
-		<a href="index.php">Accueil</a> | <a href="listing.php">Catalogue</a> | <a href="/admin/admin.php">Admin.</a>
-		<hr />
-		<h1>Nos albums</h1>
-		<hr />
-		<?php
-		    require 'lib_crud.inc.php';
-		    $co=connexionBD();
-		    afficherCatalogue($co);
-		    deconnexionBD($co);
-		?>
-	</body>
-</html>
+

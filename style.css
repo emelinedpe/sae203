@@ -163,10 +163,15 @@ main{
  border-bottom:1px solid #e74c3c;	
 }
 
+.input-container input:focus ~ label,
 .input-container input:focus ~ label{
 	top:-12px;
 	font-size:16px;
 	
+}
+
+#labelRecherche{
+    color: #c12f83;
 }
 
 #formSearch{
@@ -206,11 +211,11 @@ li{
     list-style-type: none;
     font-size: 1.0rem;
     text-decoration: underline;
-    font-family: monospace;;
+    font-family: monospace;
     list-style-type: none;
     font-size: 1.0rem;
     text-decoration: underline;
-    font-family: monospace;
+
 }
 .button {
     display: inline-block;
@@ -225,7 +230,7 @@ li{
     position: relative;
     min-width: 8.23em;
     text-decoration: none;
-    font-family: var(--font);
+    
     font-size: 1.25rem;
 }
 
@@ -257,6 +262,10 @@ li{
 .button:hover:before,
 .button:hover:after {
     transform: none;
+}
+
+.button:hover{
+    cursor: pointer;
 }
 
 #submitBtn{
@@ -424,11 +433,31 @@ li{
   from {opacity: 0;}
   to {opacity: 1;}
 }
-#divplantes{
+/*#divplantes{
     background-color: transparent;
     border-radius:5%;
+}*/
+.divPlante{
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 5%;
+    margin-bottom: 5%;
+    text-align: center;
+    padding: 10%;
 }
 
+.divPlante h4{
+    color: #c12f83;
+    margin-top: 0;
+}
+.divPlante h3{
+    margin-bottom: 5%;
+}
+#titleRecherche{
+    text-align: center;
+}
+body{
+    font-family: monospace!important;
+}
 @media screen and (min-width: 480px){
 nav { 
     flex-direction: row;

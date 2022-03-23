@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 require('header.php');
 ?>
 <h1>Shokubutsu, la bibliothèque numérique de plantes et fleurs !</h1>
-<p>Résultats de votre recherche</p>
+<p id="titleRecherche">Résultats de votre recherche</p>
 <hr />
 <?php
  /*require 'lib_crud.inc.php';

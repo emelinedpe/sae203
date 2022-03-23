@@ -7,7 +7,8 @@ $co=connexionBD();
 <h2 id="SearchH2">Sur cette page, vous pourrez Rechercher toutes vos plantes préférés et ainsi obtenir des informations sur celles-ci.</h2>
 <form METHOD="GET" action="reponse_recherche.php" id="formSearch" data-parsley-required>
     <div class="input-container">
-    <input type="search"  name="inp_search"id="real" list="auteurs" autocomplete="off" />
+        <input type="search"  name="inp_search"id="real" list="auteurs" autocomplete="off" />
+        <label id='labelRecherche' for="inp_search">Rechercher</label>
     <datalist id="auteurs">
     <?php
     // On va afficher ici la datalist
