@@ -14,9 +14,7 @@
     try {
       // on essaie de se connecter
       // le port et le dbname ci-dessous sont À ADAPTER à vos données
-      $mabd = new PDO('mysql:host=127.0.0.1;port=3306;
-                dbname=sae203;charset=UTF8;', 
-                LUTILISATEUR, LEMOTDEPASSE);
+      $mabd = new PDO('mysql:host=localhost;dbname=sae203;charset=UTF8;', 'sae203','22108119');
       // on passe le codage en utf-8
       $mabd->query('SET NAMES utf8;');
     } catch (PDOException $e) {
@@ -36,8 +34,8 @@
   // affichage du catalogue des BDs
   function afficherCatalogue($mabd) {
     $req = "SELECT * FROM plantes 
-            INNER JOIN lieux
-            ON plantes.lieux_id = lieux.lieux_id";
+            INNER JOIN Lieux
+            ON plantes.lieux_id = Lieux.lieux_id";
     try {
         $resultat = $mabd->query($req);
     } catch (PDOException $e) {
@@ -51,8 +49,8 @@
 // affichage de la liste des plantes pour la gestion
 function afficherListe($mabd) {
     $req = "SELECT * FROM plantes
-            INNER JOIN lieux 
-            ON plantes.lieux_id = lieux.lieux_id";
+            INNER JOIN Lieux 
+            ON plantes.lieux_id = Lieux.lieux_id";
     try {
         $resultat = $mabd->query($req);
     } catch (PDOException $e) {
@@ -82,7 +80,7 @@ function afficherListe($mabd) {
 
 // affichage de la liste des plantes pour la gestion
 function afficherLieux($mabd) {
-  $req = "SELECT * FROM lieux";
+  $req = "SELECT * FROM Lieux";
   try {
       $resultat = $mabd->query($req);
   } catch (PDOException $e) {
@@ -117,7 +115,7 @@ function deletePlante($planteId,$mabd){
 
 //Supprime une plante en BDD en fonction d'un id passé en paramètre.
 function deleteLieu($lieuId,$mabd){
-  $req = 'DELETE FROM `lieux` WHERE lieux_id = '.$lieuId.';'; 
+  $req = 'DELETE FROM `Lieux` WHERE lieux_id = '.$lieuId.';'; 
   $resultat = $mabd->query($req);
 }
 
@@ -137,7 +135,7 @@ function insertionPlantes($nom,$nom2,$taille,$vie,$nourriture,$propriete,$pays,$
 
 // Insertion des données en bases
 function insertionLieu($nom,$climat,$type,$mabd) {
-  $req = "INSERT INTO lieux (lieux_nom, lieux_climat,lieux_type) VALUES ('$nom', '$climat', '$type');";
+  $req = "INSERT INTO Lieux (lieux_nom, lieux_climat,lieux_type) VALUES ('$nom', '$climat', '$type');";
   try {
       $resultat = $mabd->query($req);
   } catch (PDOException $e) {
@@ -171,7 +169,7 @@ function UpdatePlantes($nom,$nom2,$taille,$vie,$nourriture,$propriete,$pays,$ima
 
 // mise a jour des données en bases
 function UpdateLieux($nom,$clim,$type,$idLieu,$mabd) {
-  $req = "UPDATE lieux
+  $req = "UPDATE Lieux
   SET lieux_nom = '$nom',
   lieux_climat = '$clim',
     lieux_type = '$type'
@@ -186,7 +184,7 @@ function UpdateLieux($nom,$clim,$type,$idLieu,$mabd) {
 }
 //Récupère les informations d'une plante en fonction d'un ID passé en paramètre
 function getPlante($mabd, $idPlante){
-  $req = "SELECT * FROM plantes INNER JOIN lieux ON plantes.lieux_id = lieux.lieux_id WHERE pl_id = $idPlante;";
+  $req = "SELECT * FROM plantes INNER JOIN Lieux ON plantes.lieux_id = Lieux.lieux_id WHERE pl_id = $idPlante;";
 
   try {
     $resPlante = $mabd->query($req);
@@ -201,7 +199,7 @@ function getPlante($mabd, $idPlante){
 
 //Récupère les informations d'un lieu en fonction d'un ID passé en paramètre
 function getLieu($mabd, $idLieu){
-  $req = "SELECT * FROM lieux WHERE lieux_id = $idLieu;";
+  $req = "SELECT * FROM Lieux WHERE lieux_id = $idLieu;";
 
   try {
     $resLieu = $mabd->query($req);
@@ -216,7 +214,7 @@ function getLieu($mabd, $idLieu){
 
 //Récupère la liste des lieux
 function getListeLieux($mabd){
-  $req="SELECT lieux_id, lieux_nom FROM lieux;";
+  $req="SELECT lieux_id, lieux_nom FROM Lieux;";
   try {
     $resLieux = $mabd->query($req);
   } catch (PDOException $e) {

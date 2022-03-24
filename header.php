@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/sae203/style.css">
+    <link rel="stylesheet" href="../style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://parsleyjs.org/dist/parsley.min.js"></script>
     <link rel="stylesheet" href="https://parsleyjs.org/src/parsley.css">
@@ -15,11 +15,11 @@
 <body>
 <header>
     <nav>
-        <a href="https://mmi21b05.sae203.ovh/"><img src="/sae203/images/logo.png" alt="logo"></a>
+        <a href="https://mmi21b05.sae203.ovh/"><img src="../images/logo.png"></a>
         <ul>
-            <a href="/sae203/form_recherche.php"id="lire"><li>Rechercher une plante</li></a>
-            <a href="/sae203/listing.php"id="lili"><li>Catalogue</li></a>
-            <a href="/sae203/admin/admin.php"id="liad"><li>Administration</li></a>
+            <a href="../form_recherche.php"id="lire"><li>Rechercher une plante</li></a>
+            <a href="../listing.php"id="lili"><li>Catalogue</li></a>
+            <a href="../admin/admin.php"id="liad"><li>Administration</li></a>
             
         </ul>
     </nav>

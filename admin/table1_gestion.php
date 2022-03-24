@@ -1,6 +1,6 @@
 <?php require '../header.php'; ?>
     <body>
-        <a href="/sae203/index.php">Accueil</a>
+        <a href="../index.php">Accueil</a>
         <hr />
         <h1>Gestion des données</h1>
 

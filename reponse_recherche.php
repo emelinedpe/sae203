@@ -13,7 +13,7 @@ require('header.php');
  afficherResultatRecherche($co);
  deconnexionBD($co);*/
  if (!empty($_GET['inp_search'])) {
-    $connectBDD = new PDO('mysql:host=localhost;dbname=sae203;charset=UTF8;', 'root', '');
+    $connectBDD = new PDO('mysql:host=localhost;dbname=sae203;charset=UTF8;', 'sae203', '22108119');
     $connectBDD->query('SET NAMES utf8;');
     $req = "SELECT * FROM plantes WHERE pl_nom LIKE '%".$_GET['inp_search']."%' OR pl_nom2 LIKE '%".$_GET['inp_search']."%';";
     $resultat = $connectBDD->query($req);

@@ -15,7 +15,7 @@ require('header.php');
 	</body>
 </html>
 <?php
-$mesplantes = new PDO('mysql:host=localhost;dbname=sae203;charset=UTF8;', 'root','');
+$mesplantes = new PDO('mysql:host=localhost;dbname=sae203;charset=UTF8;', 'sae203','22108119');
 
 $mesplantes->query('SET NAMES utf8;');
 $req = "SELECT * FROM plantes INNER JOIN Lieux ON plantes.lieux_id = Lieux.lieux_id;";
